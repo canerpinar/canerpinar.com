@@ -2,14 +2,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <h:outputStylesheet library="css" name="default.css" />
+        <h:outputStylesheet library="cssExtra" name="default.css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
     </h:head>
-    <h:body>
-        <div id="header">
+    <h:body id="body">
+     <!--
+     <div id="header">
             <ui:include src="header.xhtml"/>
         </div>
+     -->
         
         <div id="banner">
             <ui:include src="banner.xhtml"/>    
@@ -20,16 +27,64 @@
             <ui:include src="menu.xhtml"/>            
         </div>
         
-        <div id="content">
-            <ui:insert name="content">
-                
-            </ui:insert>            
-        </div>
+     <div id="container" class="row">
+            
+            
         
-        <div id="bottom">
-            <ui:include src="bottom.xhtml"/>
+   
+         <div id="content" class="col-md-6 col-center col-xs-6">
+                    <ui:insert name="content">
+
+
+                        
+                    </ui:insert>            
+        </div>
+                
+         <div id="space" class="col-md-1 col-xs-1">
+             
+         </div>   
+        
+         <div id="rightPanel" class="col-md-3 col-xs-3">
+                    <ui:include src="right.xhtml"/>
+
+            </div>
+         
+         <div id="baglanti" class="col-md-2 col-xs-2">
+             Baglantılar
+             
+         </div>
             
         </div>
+        
+        
+        <div class="row">
+            <div id="bottom" class="col-md-12 col-xs-12">
+            <ui:include src="bottom.xhtml"/>
+            
+            </div>
+            
+        </div>
+        
+        
+        <div class="row">
+            <div id="deneme" class="col-md-12 col-xs-12" >
+                bakalım saonrası
+            </div>            
+        </div>
+        
+     <h:form styleClass="form-horizontal">
+         <div id="row">
+             <div class="col-md-12">
+                 <h:inputText styleClass="form-control"/>
+                 
+             </div>
+             
+             
+         </div>
+         
+     </h:form>
+     
     </h:body>
+
 </html>
 
