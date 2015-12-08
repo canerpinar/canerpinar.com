@@ -18,7 +18,7 @@ import pck.Entity.Yazilar;
  * @author caner
  */
 @ManagedBean
-public class yazilar {
+public class yazilarBean {
     
     List listeYazi=new ArrayList<>();
 
@@ -31,6 +31,6 @@ public class yazilar {
         this.listeYazi = listeYazi;
     }
     
- 
+
     
 }
