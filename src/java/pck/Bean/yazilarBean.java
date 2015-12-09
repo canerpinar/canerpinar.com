@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.naming.NamingException;
+import pck.Entity.Yazi;
 import pck.Entity.Yazilar;
 
 /**
@@ -20,17 +21,20 @@ import pck.Entity.Yazilar;
 @ManagedBean
 public class yazilarBean {
     
-    List listeYazi=new ArrayList<>();
+    List<Yazi> listeYazi=new ArrayList<>();
 
-  
-    public List<Yazilar> getListeYazi() {
-        return listeYazi;
+    
+    public List<Yazi> getListeYazi() {        
+        return listeYazi=new Yazilar().getYazilar();
     }
 
-    public void setListeYazi(List<Yazilar> listeYazi) {
+    public void setListeYazi(List<Yazi> listeYazi) {
         this.listeYazi = listeYazi;
     }
-    
 
+    @PostConstruct
+    public void pageLoad(){
+        getListeYazi();
+    }
     
 }

@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -29,16 +31,30 @@ public class DAO {
     Connection conn=null;
     Statement statement=null;
             
-    public DAO() throws NamingException, SQLException{
+    public DAO(){
+        try {
             initContext = new InitialContext();
             envContext  = (Context)initContext.lookup("java:comp/env/");
             ds = (DataSource)envContext.lookup("jdbc/Test");
             conn = ds.getConnection();            
-            statement=conn.createStatement();    
+            statement=conn.createStatement(); 
+        } catch (NamingException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
+               
     }
     
-    public ResultSet getYazilar() throws SQLException{                
-        ResultSet set=statement.executeQuery("select *from yazilar");
+    public ResultSet getYazilar(){                
+        ResultSet set = null;
+        try {
+            set = statement.executeQuery("select *from yazilar");
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return set;
     }
 }

@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
 import pck.DB.DAO;
 
@@ -18,20 +20,31 @@ import pck.DB.DAO;
  */
 public class Yazilar {
     
-    private List<Yazi> listYazilar=new ArrayList<>();    
-    public List<Yazi> getYazilar() throws NamingException, SQLException{
+    private List<Yazi> listYazilar=new ArrayList<>();
+    
+    public List<Yazi> getYazilar(){
         DAO dao=new DAO();
         ResultSet resultSet=dao.getYazilar();
         
-        while(resultSet.next()){
-            Yazi yazi=new Yazi();
-            yazi.setId(Integer.parseInt(resultSet.getString(1)));
-            yazi.setBaslik(resultSet.getString(2));
-            yazi.setContent(resultSet.getString(3));
-            yazi.setLink(resultSet.getString(4));
-            listYazilar.add(yazi);            
+        try {
+            while(resultSet.next()){
+                Yazi yazi=new Yazi();
+                yazi.setId(Integer.parseInt(resultSet.getString(1)));
+                yazi.setBaslik(resultSet.getString(2));
+                yazi.setContent(resultSet.getString(3));
+                yazi.setLink(resultSet.getString(4));            
+                listYazilar.add(yazi);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Yazilar.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try {
+                resultSet.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Yazilar.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        resultSet.close();
+        
     return listYazilar;    
     }
 }

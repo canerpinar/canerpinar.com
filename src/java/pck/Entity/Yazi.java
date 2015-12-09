@@ -9,7 +9,7 @@ package pck.Entity;
  *
  * @author caner
  */
-class Yazi{
+public class Yazi{
 
     private int id;
     private String baslik;
