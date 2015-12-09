@@ -52,9 +52,11 @@ public class DAO {
         ResultSet set = null;
         try {
             set = statement.executeQuery("select *from yazilar");
+
         } catch (SQLException ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return set;
+        
     }
 }
