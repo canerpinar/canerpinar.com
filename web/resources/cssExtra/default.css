@@ -25,6 +25,10 @@ and open the template in the editor.
     
     width: 25%;
     height: 75%;
+    background-color:#c7e7f4;;
+    border-radius: 5px;
+    margin-left: 10px;
+        
     
 }
 #container div
@@ -60,5 +64,7 @@ and open the template in the editor.
 }
 #baglanti{
     font-size: small;
-    margin-left: 0px;
+    margin-left: 10px;
+    background-color: #c7e7f4;
+    border-radius: 10px;
 }

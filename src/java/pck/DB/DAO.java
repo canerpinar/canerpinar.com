@@ -9,15 +9,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import pck.Entity.Yazilar;
 
 /**
  *
@@ -58,5 +55,9 @@ public class DAO {
         }
         return set;
         
+    }
+    public void daoClose() throws SQLException{
+        statement.close();
+        conn.close();
     }
 }

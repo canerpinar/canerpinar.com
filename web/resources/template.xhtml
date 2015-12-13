@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <h:outputStylesheet library="cssExtra" name="default.css" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -40,9 +41,7 @@
                     </ui:insert>            
         </div>
                 
-         <div id="space" class="col-md-1 col-xs-1">
-             
-         </div>   
+  
         
          <div id="rightPanel" class="col-md-3 col-xs-3">
                     <ui:include src="right.xhtml"/>
@@ -51,11 +50,14 @@
          
          <div id="baglanti" class="col-md-2 col-xs-2">
              BAGLANTILAR <br/>
-             <a href="https://github.com/canerpinar">https://github.com/canerpinar</a>
+             <h:form>
+               <h:commandLink value="github.com/canerpinar" action="https://github.com/canerpinar"/>  
+             </h:form>
+             
          </div>
             
         </div>
-        
+     <f:verbatim><hr/></f:verbatim>
         
         <div class="row">
             <div id="bottom" class="col-md-12 col-xs-12">

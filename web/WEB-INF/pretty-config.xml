@@ -25,4 +25,9 @@ and open the template in the editor.
           <view-id value="/faces/blog.xhtml" />
     </url-mapping> 
 
+
+    <url-mapping> 
+          <pattern value="/"/> 
+          <view-id value="/faces/index.xhtml" />
+    </url-mapping>
 </pretty-config>

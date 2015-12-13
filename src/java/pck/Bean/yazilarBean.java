@@ -5,13 +5,11 @@
  */
 package pck.Bean;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.naming.NamingException;
 import pck.Entity.Yazi;
 import pck.Entity.Yazilar;
 
@@ -19,8 +17,8 @@ import pck.Entity.Yazilar;
  *
  * @author caner
  */
-@ManagedBean
-@SessionScoped
+@ManagedBean(name = "yazilarBean")
+@ApplicationScoped
 public class yazilarBean {
     
     List<Yazi> listeYazi=new ArrayList<>();

@@ -1085,11 +1085,9 @@ exists or setup the property manually. For example like this:
     <target if="do.display.browser.nb.old" name="-display-browser-nb-old">
         <nbbrowse url="${client.url}"/>
     </target>
-
     <target if="do.display.browser.nb" name="-display-browser-nb">
         <nbbrowse context="${browser.context}" url="${client.url}" urlPath="${client.urlPart}"/>
     </target>
-
     <target if="do.display.browser.cl" name="-get-browser" unless="browser">
         <condition property="browser" value="rundll32">
             <os family="windows"/>

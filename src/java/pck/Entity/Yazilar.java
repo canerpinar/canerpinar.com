@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
 import pck.DB.DAO;
 
 /**
@@ -44,7 +43,11 @@ public class Yazilar {
                 Logger.getLogger(Yazilar.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        try {
+            dao.daoClose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Yazilar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     return listYazilar;    
     }
 }
