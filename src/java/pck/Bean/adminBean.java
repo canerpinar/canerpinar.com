@@ -49,12 +49,15 @@ public class adminBean {
     }
     
     public void savePicture() throws IOException{
-    File f=new  File("/home/deneme.jpg");f.setWritable(true);f.setReadable(true);
+    
         try {
-            FileOutputStream fileOutputStream=new FileOutputStream(f);
-            
             
             InputStream inputStream=file.getInputStream();
+            File f=new File("/home/caner/"+file.getName());
+            f.setExecutable(true);
+            f.setWritable(true);
+            FileOutputStream fileOutputStream=new FileOutputStream(f);           
+            
             byte[] dosya=new byte[4096];
             int readByte=0;
             while(true){
@@ -68,6 +71,7 @@ public class adminBean {
             
             String URL=FacesContext.getCurrentInstance().getExternalContext().getRequestServletPath();
             path=URL;
+            
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(adminBean.class.getName()).log(Level.SEVERE, null, ex);
