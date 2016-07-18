@@ -5,16 +5,14 @@
  */
 package pck.Bean;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.FacesConverter;
+import javax.naming.NamingException;
+import pck.DB.DAO;
 import pck.Entity.Yazi;
 import pck.Entity.Yazilar;
 
@@ -22,14 +20,25 @@ import pck.Entity.Yazilar;
  *
  * @author caner
  */
-@ManagedBean(name = "yazilarBean")
+@ManagedBean
 @SessionScoped
 public class yazilarBean {
     
     List<Yazi> listeYazi=new ArrayList<>();
     String yaziContent;
     String yaziURL;
+    String baslik;
 
+    public String getBaslik() {
+        return baslik;
+    }
+
+    public void setBaslik(String baslik) {
+        this.baslik = baslik;
+    }
+
+    
+    
     private String Content="";//yazılacak yazıların p:editör nesne içeriği
 
     public String getContent() {
@@ -74,13 +83,22 @@ public class yazilarBean {
     public String getYaziLink(Yazi yazi){
         yaziContent=yazi.getContent();
         yaziURL=yazi.getLink();
+        baslik=yazi.getBaslik();
 
         return "blog.xhtml?faces-redirect=true&yazi="+yaziURL;
     }
     
     public void addContent(){
         Content=Content+yaziURL;
+        yaziContent=Content;
         yaziURL="";
+    }
+    
+    public void save() throws SQLException, NamingException{
+        DAO dao=new DAO();
+        dao.saveYazi(yaziContent,baslik,yaziURL);
+        dao.daoClose();
+        
     }
     
 }

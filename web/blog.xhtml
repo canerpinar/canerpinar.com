@@ -10,6 +10,7 @@
         Hello from Facelets
         <ui:composition template="resources/template.xhtml">
             <ui:define name="content">
+                <b>#{yazilarBean.baslik}</b><br/>
                 Yazi İçeriğim: #{yazilarBean.yaziContent}
                 
             </ui:define>

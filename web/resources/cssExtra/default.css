@@ -8,6 +8,8 @@ and open the template in the editor.
     Author     : caner
 */
 
+
+
 #header{
     background-color: bisque;
 }
@@ -21,14 +23,11 @@ and open the template in the editor.
     background-image: url(images/backround_map.jpg);
 }
 
-#rightPanel{
-    
-    width: 25%;
-    height: 75%;
-    background-color:#c7e7f4;;
+#rightPanel{   
+    background-color:#c7e7f4;
     border-radius: 5px;
-    margin-left: 10px;
-        
+    width: 20%;
+    left: 65px;
     
 }
 #container div
@@ -67,4 +66,26 @@ and open the template in the editor.
     margin-left: 10px;
     background-color: #c7e7f4;
     border-radius: 10px;
+}
+
+
+@media screen and (max-width:650px){
+    #rightPanel{
+    background-color:yellow;
+    border-radius: 5px;
+    width: 100%;
+    left: 0px;
+
+    }
+
+}
+@media screen and (max-width:1024px){
+    #rightPanel{
+    background-color:#c7e7f4;
+    border-radius: 5px;
+    width: 100%;
+    left: 0px;
+
+    }
+
 }

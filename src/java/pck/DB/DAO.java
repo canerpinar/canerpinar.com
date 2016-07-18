@@ -30,10 +30,11 @@ public class DAO {
             
     public DAO(){
         try {
-            initContext = new InitialContext();
+            initContext = new InitialContext();                     
             envContext  = (Context)initContext.lookup("java:comp/env/");
             ds = (DataSource)envContext.lookup("jdbc/Test");
-            conn = ds.getConnection();            
+            conn = ds.getConnection();
+            
             statement=conn.createStatement(); 
         } catch (NamingException ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,11 +54,16 @@ public class DAO {
         } catch (SQLException ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return set;
-        
+        return set;        
     }
-    public void daoClose() throws SQLException{
+    
+    public void saveYazi(String yazi,String baslik,String url) throws SQLException{
+        statement.execute("insert into yazilar(baslik,yazi,link) values('"+baslik+"','"+yazi+"','"+url+"')");
+    }
+    
+    public void daoClose() throws SQLException, NamingException{
         statement.close();
         conn.close();
+
     }
 }

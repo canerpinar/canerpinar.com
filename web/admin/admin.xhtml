@@ -15,8 +15,10 @@
                
             <h:commandLink value="Ekle" actionListener="#{yazilarBean.addContent()}" />
             
-            <div style="text-align: justify;"><h:outputText value="#{yazilarBean.content}" escape="false"/></div>
-            
+            <div style="text-align: justify;"><h:outputText value="#{yazilarBean.content}" escape="false"/></div><br/>
+            <div><h:outputLabel value="Başlık :"/><h:inputText value="#{yazilarBean.baslik}"/></div><br/>
+            <div><h:outputLabel value="URL :"/><h:inputText value="#{yazilarBean.yaziURL}"/></div>
+            <h:commandLink value="KAYDET" action="#{yazilarBean.save()}"/><br/>
             <h:commandLink value="Log out" action="#{authBean.logout()}"/>
         </h:form>
     </h:body>
