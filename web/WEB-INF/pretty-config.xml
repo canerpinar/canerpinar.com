@@ -10,22 +10,22 @@ and open the template in the editor.
                xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.0
                                    		http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.0.xsd">
 
-    
+    <!--
 
     <url-mapping id="YAZILAR"> 
-          <pattern value="/#{yazi}"/> 
+          <pattern value="/#{yazi}/"/> 
           <view-id value="/faces/blog.xhtml" />
     </url-mapping> 
     
-    <url-mapping> 
-          <pattern value="/"/> 
-          <view-id value="/faces/index.xhtml" />
-    </url-mapping>
     
     <url-mapping> 
-          <pattern value="/LOGIN"/> 
+          <pattern value="/LOGIN/"/> 
           <view-id value="/faces/admin/login.xhtml" />
     </url-mapping>
     
-    
+    <url-mapping> 
+          <pattern value="/ADMIN/"/> 
+          <view-id value="/faces/admin/admin.xhtml" />
+    </url-mapping>
+    -->
 </pretty-config>

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.naming.NamingException;
 import pck.DB.DAO;
@@ -21,7 +22,7 @@ import pck.Entity.Yazilar;
  * @author caner
  */
 @ManagedBean(name = "yazilarBean")
-@SessionScoped
+@RequestScoped
 public class yazilarBean {
     
     List<Yazi> listeYazi=new ArrayList<>();

@@ -5,11 +5,18 @@
  */
 package pck.Bean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+
 import org.apache.shiro.subject.Subject;
 
 /**
@@ -17,7 +24,7 @@ import org.apache.shiro.subject.Subject;
  * @author caner
  */
 @ManagedBean(name = "authBean")
-@SessionScoped
+@RequestScoped
 public class authBean {
     private String username;
     private String password;
@@ -39,21 +46,33 @@ public class authBean {
     }
  
     
-    
     public String girisControl(){
+        return "/index.xhtml";
+    }
+     public String girisiKontrolEt(){
+        
         Subject currentUser = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
  
-        
-        currentUser.login(token);
-        
-        if(currentUser.hasRole("admin")){
-            System.out.println("Giriş başarılı");
-        return "/admin/admin.xhtml?faces-redirect=true"; 
-        }               
+        try{
+            currentUser.login(token);
+        } catch (UnknownAccountException uae ) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Giriş başarısız", "kullanıcı adınız yanlış"));
+            return null;
+        } catch (IncorrectCredentialsException ice ) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Giriş başarısız", "parolanız yanlış"));
+            return null;
+        } catch (LockedAccountException lae ) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Giriş başarısız", "Bu kullanıcı adı kilitli"));
+            return null;
+        } catch(AuthenticationException aex){
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Giriş başarısız", aex.toString()));
+            return null;
+        }
+        if(username.equals("mastercan"))
+        return "/faces/admin/admin.xhtml?faces-redirect=true";
         else
-           System.out.println("Giriş başarısız"); 
-        return "/index.xhtml?faces-redirect=true";
+        return "bilgilendirme.xhtml?faces-redirect=true";
     }
     
     public String logout() {
@@ -62,6 +81,6 @@ public class authBean {
         
         
             currentUser.logout();               
-        return "/index.xhtml?faces-redirect=true";
+        return "/faces/index.xhtml?faces-redirect=true";
     }
 }
