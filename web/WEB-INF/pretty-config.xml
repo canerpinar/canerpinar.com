@@ -13,14 +13,9 @@ and open the template in the editor.
     
 
     <url-mapping id="YAZILAR"> 
-          <pattern value="/BLOGGER/#{yazi}"/> 
+          <pattern value="/#{yazi}"/> 
           <view-id value="/faces/blog.xhtml" />
     </url-mapping> 
-    
-    <url-mapping> 
-          <pattern value="/BLOGGER"/> 
-          <view-id value="/faces/blog.xhtml" />
-    </url-mapping>
     
     <url-mapping> 
           <pattern value="/"/> 

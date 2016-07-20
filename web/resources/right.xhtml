@@ -14,7 +14,7 @@
             
                 <h:dataTable value="#{yazilarBean.listeYazi}" var="yazi">
                     <h:column>
-                        <f:facet name="header">Deneme</f:facet>
+                        
                         <h:commandLink value="#{yazi.baslik}" action="#{yazilarBean.getYaziLink(yazi)}">                            
                             <f:verbatim><hr></hr></f:verbatim>
                         </h:commandLink>

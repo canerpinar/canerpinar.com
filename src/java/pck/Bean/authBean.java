@@ -17,7 +17,7 @@ import org.apache.shiro.subject.Subject;
  * @author caner
  */
 @ManagedBean(name = "authBean")
-@RequestScoped
+@SessionScoped
 public class authBean {
     private String username;
     private String password;
@@ -41,16 +41,18 @@ public class authBean {
     
     
     public String girisControl(){
-        
         Subject currentUser = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username,password);
  
         
         currentUser.login(token);
         
-        if(currentUser.hasRole("admin"))
-        return "/admin/admin.xhtml?faces-redirect=true";
+        if(currentUser.hasRole("admin")){
+            System.out.println("Giriş başarılı");
+        return "/admin/admin.xhtml?faces-redirect=true"; 
+        }               
         else
+           System.out.println("Giriş başarısız"); 
         return "/index.xhtml?faces-redirect=true";
     }
     
@@ -59,9 +61,7 @@ public class authBean {
         Subject currentUser = SecurityUtils.getSubject();
         
         
-            currentUser.logout();
-       
-        
+            currentUser.logout();               
         return "/index.xhtml?faces-redirect=true";
     }
 }

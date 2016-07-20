@@ -55,7 +55,7 @@ public class DAO {
         return set;        
     }
     
-    public void saveYazi(String yazi,String baslik,String url) throws SQLException{
+    public void saveYazi(String baslik,String yazi,String url) throws SQLException{
         statement.execute("insert into yazilar(baslik,yazi,link) values('"+baslik+"','"+yazi+"','"+url+"')");
     }
     

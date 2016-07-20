@@ -20,7 +20,7 @@ import pck.Entity.Yazilar;
  *
  * @author caner
  */
-@ManagedBean
+@ManagedBean(name = "yazilarBean")
 @SessionScoped
 public class yazilarBean {
     
@@ -88,17 +88,10 @@ public class yazilarBean {
         return "blog.xhtml?faces-redirect=true&yazi="+yaziURL;
     }
     
-    public void addContent(){
-        Content=Content+yaziURL;
-        yaziContent=Content;
-        yaziURL="";
-    }
-    
     public void save() throws SQLException, NamingException{
         DAO dao=new DAO();
-        dao.saveYazi(yaziContent,baslik,yaziURL);
-        dao.daoClose();
-        
+        dao.saveYazi(baslik,Content,yaziURL);
+        dao.daoClose();        
     }
     
 }
