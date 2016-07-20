@@ -9,17 +9,18 @@
     </h:head>
     <h:body>
         Admin sayfasına hoş geldiniz.
-        <h:form>
+        <h:form enctype="multipart/form-data"> 
             
             <p:editor height="100" value="#{yazilarBean.yaziURL}" rendererType="text/html"/>
                
             <h:commandLink value="Ekle" actionListener="#{yazilarBean.addContent()}" />
             
-            <div style="text-align: justify;"><h:outputText value="#{yazilarBean.content}" escape="false"/></div><br/>
-            <div><h:outputLabel value="Başlık :"/><h:inputText value="#{yazilarBean.baslik}"/></div><br/>
-            <div><h:outputLabel value="URL :"/><h:inputText value="#{yazilarBean.yaziURL}"/></div>
-            <h:commandLink value="KAYDET" action="#{yazilarBean.save()}"/><br/>
-            <h:commandLink value="Log out" action="#{authBean.logout()}"/>
+            <div style="text-align: justify;"><h:outputText value="#{yazilarBean.content}" escape="false"/></div>
+            
+            <h:commandLink value="Log out" action="#{authBean.logout()}"/><br/>
+            <h:commandLink value="resim Ekle" actionListener="#{adminBean.savePicture()}"/>
+            <h:inputFile value="#{adminBean.file }"/>
+            #{adminBean.path}
         </h:form>
     </h:body>
 </html>
